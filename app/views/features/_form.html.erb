@@ -1,0 +1,16 @@
+<%= form_for @feature, :html => {:multipart => true} do |f| %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    add an image....</br>
+    <%= image_tag(@feature.image.thumb) if @feature.image? %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+  <%= f.submit "Save" %>
+<% end %>

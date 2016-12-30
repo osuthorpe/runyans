@@ -1,2 +1,12 @@
-<h1>Features#index</h1>
-<p>Find me in app/views/features/index.html.erb</p>
+<h1>Featured Images</h1>
+
+<% @features.each do |feature| %>
+  <p>Title: <%= link_to feature.title, feature %></p>
+  <p><%= image_tag feature.image.thumb if feature.image? %></p>
+  <p><%= link_to "edit", edit_feature_path(feature) %></p>
+  <p><%= link_to 'delete',  feature,  method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+
+<% end %>
+
+<p><%= link_to "New Feature", new_feature_path %></p>

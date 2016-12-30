@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  get 'features/index'
+
+  resources :features
+  resources :services
 
   devise_scope :user do
     authenticated :user do
       root :to => 'home#admin' #matches this route when the above matches don't pass
-      resources :features
     end
 
     #Route if not logged in
