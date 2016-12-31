@@ -1,16 +1,11 @@
-<%= form_for @feature, :html => {:multipart => true} do |f| %>
+<%= simple_form_for @feature do |f| %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+  <%= f.input :title, placeholder: 'Title of the Feature' %>
 
-  <div class="field">
-    add an image....</br>
-    <%= image_tag(@feature.image.thumb) if @feature.image? %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
-  </div>
+  <%= f.input :image, as: :nice_image, required: true, label: false, input_html: { accept: "image/*" } %>
 
-  <%= f.submit "Save" %>
+  <%= f.input :homepage, label: 'include on homepage' %>
+
+  <%= f.button :submit %>
 <% end %>
+</div>

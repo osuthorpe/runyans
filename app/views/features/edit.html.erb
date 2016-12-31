@@ -1,3 +1,15 @@
-<h2>Edit Feature</h2>
-
-<%= render 'form' %>
+<div class="col-md-6">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="btn-group pull-left">
+          <%= link_to products_path, class: "btn btn-default btn-sm" do %>
+            <%= content_tag('i', nil, class: 'glyphicon glyphicon-chevron-left') %> Back
+          <% end %>
+        </div>
+        <h4 class="text-center">Edit Feature</h4>
+    </div>
+    <div class="panel-body">
+      <%= render 'form' %>
+    </div>
+  </div>
+</div>
