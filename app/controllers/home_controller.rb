@@ -4,6 +4,7 @@ class HomeController < ApplicationController
 
   def index
     @features = Feature.all
+    @services = Service.where(homepage: true)
   end
 
   def admin
