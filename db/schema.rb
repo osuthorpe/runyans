@@ -10,16 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161230001658) do
+ActiveRecord::Schema.define(version: 20161231021229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",                       null: false
+    t.integer  "parent_id"
+    t.integer  "lft",                        null: false
+    t.integer  "rgt",                        null: false
+    t.integer  "depth",          default: 0, null: false
+    t.integer  "children_count", default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["lft"], name: "index_categories_on_lft", using: :btree
+    t.index ["parent_id"], name: "index_categories_on_parent_id", using: :btree
+    t.index ["rgt"], name: "index_categories_on_rgt", using: :btree
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "product_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "features", force: :cascade do |t|
     t.string   "title",      default: "", null: false
     t.string   "image"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.string   "price"
+    t.string   "image"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "services", force: :cascade do |t|

@@ -1,0 +1,5 @@
+<h2><%= @feature.title %></h2>
+<p><%= image_tag @feature.image.thumb if @feature.image? %></p>
+<p><%= link_to "edit", edit_service_path(@feature) %></p>
+<p><%= link_to 'delete',  @feature,  method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>

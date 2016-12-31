@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resources :features
   resources :services
+  resources :categories
+  resources :products
 
   devise_scope :user do
     authenticated :user do

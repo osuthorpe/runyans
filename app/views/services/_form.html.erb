@@ -1,0 +1,26 @@
+<%= form_for @service, :html => {:multipart => true} do |f| %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    add an image....</br>
+    <%= image_tag(@service.image.thumb) if @service.image? %>
+    <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :order %>
+    <%= f.collection_select :order, [1,2,3], :to_s, :to_s, include_blank: false %>
+  </div>
+
+  <%= f.submit "Save" %>
+<% end %>

@@ -1,6 +1,6 @@
 class FeaturesController < ApplicationController
   before_action :authenticate_user!
-  before_filter :fetch_record, only: [:show, :update, :edit, :destroy]
+  before_action :fetch_record, only: [:show, :update, :edit, :destroy]
 
   def index
     @features = Feature.all
@@ -27,6 +27,11 @@ class FeaturesController < ApplicationController
   end
 
   def update
+    if @feature.update_attributes(secure_params)
+       redirect_to features_path, notice: "featured image updated."
+    else
+       render 'edit', notice: "Unable to update featured image."
+    end
   end
 
   def destroy
