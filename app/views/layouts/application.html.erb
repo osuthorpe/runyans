@@ -16,6 +16,13 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     <%= render 'layouts/nav' %>
-    <%= yield %>
+
+    <div class="container-fluid">
+      <div class="row">
+        <%= yield %>
+      </div>
+    </div>
+
+    <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -5,16 +5,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :products
 
-  devise_scope :user do
-    authenticated :user do
-      root :to => 'home#admin' #matches this route when the above matches don't pass
-    end
+  get '/admin', to: 'home#admin'
 
-    #Route if not logged in
-    unauthenticated do
-      root :to => 'home#index', as: :unauthenticated_root
-    end
-  end
+  root :to => 'home#index'
 
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

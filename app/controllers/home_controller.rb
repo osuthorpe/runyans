@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-
+    @features = Feature.all
   end
 
   def admin
