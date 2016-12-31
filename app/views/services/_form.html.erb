@@ -22,5 +22,10 @@
     <%= f.collection_select :order, [1,2,3], :to_s, :to_s, include_blank: false %>
   </div>
 
+  <div class="field">
+    <%= f.label "Feature this service on the homepage" %>
+    <%= f.check_box :homepage %>
+  </div>
+
   <%= f.submit "Save" %>
 <% end %>
