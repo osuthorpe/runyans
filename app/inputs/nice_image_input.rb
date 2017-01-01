@@ -4,7 +4,7 @@ class NiceImageInput < SimpleForm::Inputs::Base
   def input
     template.content_tag(:div, class: "fileinput fileinput-new", data: { provides: "fileinput" }) do
       template.concat(template.content_tag(:div, class: "fileinput-new thumbnail", style: "width: 400px; height: 100%;") do
-        template.image_tag((object.image.url(:thumb) || "http://placehold.it/350x150"), class: "input-prepend", size:"400x400")
+        template.image_tag((object.image.url(:thumb) || "http://placehold.it/400x400?text=upload+image"), class: "input-prepend", size:"400x400")
       end)
       template.concat(template.content_tag(:div, nil, class: "fileinput-preview fileinput-exists thumbnail", style: "width: 400px; height: 100%;"))
       template.concat(template.content_tag(:div) do
