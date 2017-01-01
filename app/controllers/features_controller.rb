@@ -13,7 +13,7 @@ class FeaturesController < ApplicationController
   def create
     @feature = Feature.new(secure_params)
 
-    if @feature.save!
+    if @feature.save
       redirect_to features_path, notice: 'Feature was added'
     else
       render :new

@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(secure_params)
 
-    if @product.save!
+    if @product.save
       redirect_to products_path, notice: 'Product was added'
     else
       render :new

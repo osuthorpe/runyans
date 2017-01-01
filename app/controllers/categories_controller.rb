@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(secure_params)
 
-    if @category.save!
+    if @category.save
       redirect_to categories_path, notice: "Category Created"
     else
       render :new

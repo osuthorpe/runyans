@@ -1,12 +1,45 @@
-<h1>Services</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+    	<div class="btn-group btn-breadcrumb">
+        <%= link_to root_path, class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-home"></i>
+        <% end %>
+        <%= link_to "Admin Area", admin_path, class: "btn btn-default" %>
+        <%= link_to "Services", services_path, class: "btn btn-default" %>
+    	</div>
+    </div>
+  </div>
 
-<% @services.each do |service| %>
-  <p>Title: <%= link_to service.title, service %></p>
-  <p><%= service.description %></p>
-  <p><%= link_to "edit", edit_service_path(service) %></p>
-  <p><%= link_to 'delete',  service,  method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Services  <%= link_to "New Service", new_service_path, class: "btn btn-primary" %></h1>
+    </div>
+  </div>
 
-<% end %>
 
-<p><%= link_to "New Service", new_service_path %></p>
+  <div class="row">
+    <% @services.each do |service| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h4 class="text-center"><%= service.title %></h4>
+              <p class="text-center"><%= "(Showing on Homepage)" if service.homepage %></p>
+          </div>
+          <div class="panel-image hide-panel-body">
+            <% if service.image? %>
+              <%= image_tag service.image.thumb, width: "100%" %>
+            <% end %>
+          </div>
+          <div class="panel-body">
+            <p><%= service.description %></p>
+          </div>
+          <div class="panel-footer text-center">
+
+            <p><%= link_to "edit", edit_service_path(service), class: "btn btn-primary btn-sm" %> <%= link_to 'delete',  service,  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

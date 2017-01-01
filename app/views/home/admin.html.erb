@@ -1,4 +1,100 @@
-<p><%= link_to "Featured", features_path %></p>
-<p><%= link_to "Services", services_path %></p>
-<p><%= link_to "Categories", categories_path %></p>
-<p><%= link_to "Products", products_path %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="btn-group btn-breadcrumb">
+        <%= link_to root_path, class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-home"></i>
+        <% end %>
+        <%= link_to "Admin Area", admin_path, class: "btn btn-default" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= link_to features_path, class: "panel-link" do %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h4 class="text-center">Featured Images</h4>
+          </div>
+          <div class="panel-body text-center">
+            <p><span class="glyphicon glyphicon-picture gi-5x"/></p>
+            <p>Images displayed in the homepage slider</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <%= link_to services_path, class: "panel-link" do %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h4 class="text-center">Our Services</h4>
+          </div>
+          <div class="panel-body text-center">
+            <p><span class="glyphicon glyphicon-wrench gi-5x"/></p>
+            <p>Services performed at the store</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <%= link_to root_path, class: "panel-link" do %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h4 class="text-center">Team Members</h4>
+          </div>
+          <div class="panel-body text-center">
+            <p><span class="glyphicon glyphicon-user gi-5x"/></p>
+            <p>Employees of the store</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <%= link_to categories_path, class: "panel-link" do %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h4 class="text-center">Product Categories</h4>
+          </div>
+          <div class="panel-body text-center">
+            <p><span class="glyphicon glyphicon-tags gi-4x"/></p>
+            <p>Product categories, example "Men's Watches"</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <%= link_to products_path, class: "panel-link" do %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h4 class="text-center">Products</h4>
+          </div>
+          <div class="panel-body text-center">
+            <p><span class="glyphicon glyphicon-shopping-cart gi-5x"/></p>
+            <p>Products sold at the store</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-4">
+      <%= link_to root_path, class: "panel-link" do %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h4 class="text-center">Website Users</h4>
+          </div>
+          <div class="panel-body text-center">
+            <p><span class="glyphicon glyphicon-edit gi-5x"/></p>
+            <p>Individuals who can modify the website</p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,42 @@
-<h1>Featured Images</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+    	<div class="btn-group btn-breadcrumb">
+        <%= link_to root_path, class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-home"></i>
+        <% end %>
+        <%= link_to "Admin Area", admin_path, class: "btn btn-default" %>
+        <%= link_to "Featured", features_path, class: "btn btn-default" %>
+    	</div>
+    </div>
+  </div>
 
-<% @features.each do |feature| %>
-  <p>Title: <%= link_to feature.title, feature %></p>
-  <p><%= image_tag feature.image.thumb if feature.image? %></p>
-  <p><%= link_to "edit", edit_feature_path(feature) %></p>
-  <p><%= link_to 'delete',  feature,  method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Featured Images  <%= link_to "New Feature", new_feature_path, class: "btn btn-primary" %></h1>
+    </div>
+  </div>
 
-<% end %>
 
-<p><%= link_to "New Feature", new_feature_path %></p>
+  <div class="row">
+    <% @features.each do |feature| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <h4 class="text-center"><%= feature.title %></h4>
+              <p class="text-center"><%= "(Showing on Homepage)" if feature.homepage %></p>
+          </div>
+          <div class="panel-image hide-panel-body">
+            <% if feature.image? %>
+              <%= image_tag feature.image.thumb, width: "100%" %>
+            <% end %>
+          </div>
+          <div class="panel-footer text-center">
+
+            <p><%= link_to "edit", edit_feature_path(feature), class: "btn btn-primary btn-sm" %> <%= link_to 'delete',  feature,  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

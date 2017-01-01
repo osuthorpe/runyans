@@ -13,7 +13,7 @@ class ServicesController < ApplicationController
   def create
     @service = Service.new(secure_params)
 
-    if @service.save!
+    if @service.save
       redirect_to services_path, notice: "Service Created"
     else
       render :new
