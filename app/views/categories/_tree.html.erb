@@ -1,0 +1,8 @@
+<% content_tag :li, :id => dom_id(category) do %>
+  <span class="handle"><%= category.title %></span>
+  <% content_tag :ul do %>
+   <% for child in category.children do %>
+    <%= render :partial => "tree", :locals => {:category => child }%>
+   <% end %>
+  <% end unless category.leaf? %>
+ <% end %>

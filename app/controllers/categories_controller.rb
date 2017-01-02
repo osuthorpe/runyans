@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   before_action :fetch_record, only: [:show, :update, :edit, :destroy]
 
   def index
-    @categories = Category.roots.order(name: :desc)
+    @categories = Category.order('lft ASC')
   end
 
   def new

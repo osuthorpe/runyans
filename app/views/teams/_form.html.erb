@@ -1,0 +1,14 @@
+<%= simple_form_for @team do |f| %>
+
+  <%= f.input :name, placeholder: 'First Last' %>
+
+  <%= f.input :image, as: :nice_image, required: true, label: false, input_html: { accept: "image/*" } %>
+
+  <%= f.input :title, placeholder: "Owner" %>
+
+  <%= f.input :description %>
+
+  <%= f.input :order, collection: 1..10, label: 'order of team members' %>
+
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

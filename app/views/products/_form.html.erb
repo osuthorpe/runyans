@@ -35,9 +35,9 @@
 
   <div class="field">
     <%= hidden_field_tag "product[category_ids][]", nil %>
-    <% Category.all.each do |category| %>
+    <%= nested_li(@categories) do |category| %>
       <%= check_box_tag "product[category_ids][]", category.id, @product.category_ids.include?(category.id), id: dom_id(category) %>
-      <%= label_tag dom_id(category), category.name %><br>
+      <%= label_tag dom_id(category), category.name %>
     <% end %>
   </div>
   <div class="actions">

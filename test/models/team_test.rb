@@ -1,19 +1,20 @@
 # == Schema Information
 #
-# Table name: products
+# Table name: teams
 #
 #  id          :integer          not null, primary key
 #  name        :string           not null
-#  description :text
-#  price       :string
 #  image       :string
+#  description :text
+#  order       :integer
+#  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 require 'test_helper'
 
-class ProductTest < ActiveSupport::TestCase
+class TeamTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

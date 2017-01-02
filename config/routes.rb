@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :services
   resources :categories
   resources :products
+  resources :teams
 
   get '/admin', to: 'home#admin'
 

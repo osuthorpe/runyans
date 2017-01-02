@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @categories = Category.order('lft ASC')
   end
 
   def create
@@ -24,6 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @categories = Category.order('lft ASC')
   end
 
   def update

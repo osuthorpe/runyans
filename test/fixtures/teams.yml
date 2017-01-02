@@ -1,27 +1,29 @@
 # == Schema Information
 #
-# Table name: services
+# Table name: teams
 #
 #  id          :integer          not null, primary key
-#  title       :string           not null
-#  description :text             not null
-#  image       :string           not null
-#  order       :integer          not null
+#  name        :string           not null
+#  image       :string
+#  description :text
+#  order       :integer
+#  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  homepage    :boolean          default("false")
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyText
+  name: MyString
   image: MyString
+  description: MyText
   order: 1
+  title: MyString
 
 two:
-  title: MyString
-  description: MyText
+  name: MyString
   image: MyString
+  description: MyText
   order: 1
+  title: MyString
