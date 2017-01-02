@@ -26,12 +26,15 @@ h4 {
   margin-bottom: 15px;
 }
 
-.categories ul {
+.field ul {
   list-style: none;
 }
 
+.field > ul {
+  padding-left: 0px;
+}
 .categories > ul {
-  padding-left: 0;
+  padding-left: 20px;
 }
 
 .gi-2x{font-size: 2em;}

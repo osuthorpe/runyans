@@ -1,11 +1,8 @@
-<%= form_for @category, :html => {:multipart => true} do |f| %>
+<%= simple_form_for @category do |f| %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <%= f.input :name %>
 
-  <%= f.select :parent_id, nested_set_options(Category, @category) {|i| "#{'-' * i.level} #{i.name}" }, {:include_blank => true} %>
+  <%= f.association :parent, collection: Category.where("id != #{@category.id}") %>
 
-  <%= f.submit "Save" %>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

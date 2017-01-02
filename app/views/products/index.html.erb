@@ -1,14 +1,33 @@
-<h1>Products</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+    	<div class="btn-group btn-breadcrumb">
+        <%= link_to root_path, class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-home"></i>
+        <% end %>
+        <%= link_to "Admin Area", admin_path, class: "btn btn-default" %>
+        <%= link_to "Products", products_path, class: "btn btn-default" %>
+    	</div>
+    </div>
+  </div>
 
-<% @products.each do |product| %>
-  <p><%= image_tag product.image.thumb if product.image? %></p>
-  <p>name: <%= link_to product.name, product %></p>
-  <p><%= product.description %></p>
-  <p><%= product.price %></p>
-  <p><%= link_to "edit", edit_product_path(product) %></p>
-  <p><%= link_to 'delete',  product,  method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>Products  <%= link_to "New Products", new_product_path, class: "btn btn-primary" %></h1>
+    </div>
+  </div>
 
-<% end %>
 
-<p><%= link_to "New Product", new_product_path %></p>
+  <div class="row">
+    <div class="col-sm-12">
+      <% @products.each do |product| %>
+        <p><%= image_tag product.image.thumb if product.image? %></p>
+        <p>name: <%= link_to product.name, product %></p>
+        <p><%= product.description %></p>
+        <p><%= product.price %></p>
+        <p><%= link_to "edit", edit_product_path(product) %></p>
+        <p><%= link_to 'delete',  product,  method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
