@@ -6,7 +6,7 @@
           <i class="glyphicon glyphicon-home"></i>
         <% end %>
         <%= link_to "Admin Area", admin_path, class: "btn btn-default" %>
-        <%= link_to "Team Members", categories_path, class: "btn btn-default" %>
+        <%= link_to "Categories", categories_path, class: "btn btn-default" %>
     	</div>
     </div>
   </div>
@@ -23,7 +23,7 @@
       <div class="categories">
         <%= nested_li(@categories) do |category| %>
           <h4>
-            <%= category.name %>
+            <%= link_to category.name, category %>
             <%= link_to "edit", edit_category_path(category), class: "btn btn-default btn-xs margin-left-10" %>
             <%= link_to 'delete',  category,  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
           </h4>

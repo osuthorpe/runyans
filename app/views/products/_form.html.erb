@@ -1,46 +1,21 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div class="error_messages">
-      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+<%= simple_form_for @product do |f| %>
 
-      <ul>
-      <% @product.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.input :name %>
+
+  <%= f.input :image, as: :nice_image, required: true, label: false, input_html: { accept: "image/*" } %>
+
+  <%= f.input :description %>
+
+  <%= f.input :price %>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </div>
-
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-
-  <div class="field">
-    add an image....</br>
-    <%= image_tag(@product.image.thumb) if @product.image? %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
-  </div>
-
-  <div class="field">
+    <label>Categories</label>
     <%= hidden_field_tag "product[category_ids][]", nil %>
     <%= nested_li(@categories) do |category| %>
       <%= check_box_tag "product[category_ids][]", category.id, @product.category_ids.include?(category.id), id: dom_id(category) %>
       <%= label_tag dom_id(category), category.name %>
     <% end %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

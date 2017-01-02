@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+    	<div class="btn-group btn-breadcrumb">
+        <%= link_to root_path, class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-home"></i>
+        <% end %>
+        <%= link_to "Admin Area", admin_path, class: "btn btn-default" %>
+        <%= link_to "Categories", categories_path, class: "btn btn-default" %>
+        <%= link_to "#{@category.name}", category_path(@category), class: "btn btn-default" %>
+    	</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>
+        <%= link_to categories_path, class: "btn btn-default btn-sm" do %>
+          <%= content_tag('i', nil, class: 'glyphicon glyphicon-chevron-left') %> Back
+        <% end %>
+        <%= @category.name %>
+      </h1>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <% @category.products.each do |product| %>
+      <div class="col-sm-3 col-md-3">
+        <div class="panel panel-default">
+          <div class="panel-image hide-panel-body">
+            <% if product.image? %>
+              <%= image_tag product.image.thumb, width: "100%" %>
+            <% end %>
+          </div>
+          <div class="panel-body">
+            <h4><%= product.name %></h4>
+            <p><%= product.description %></p>
+            <p><%= product.price %></p>
+            <%= product.categories.collect { |category| link_to category.name, category }.join(",").html_safe %>
+          </div>
+          <div class="panel-footer text-center">
+            <p><%= link_to "edit", edit_product_path(product), class: "btn btn-primary btn-sm" %> <%= link_to 'delete',  product,  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
