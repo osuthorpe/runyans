@@ -1,11 +1,40 @@
-<h2><%= t "devise.invitations.new.header" %></h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="btn-group btn-breadcrumb">
+        <%= link_to root_path, class: "btn btn-default" do %>
+          <i class="glyphicon glyphicon-home"></i>
+        <% end %>
+        <%= link_to "Admin Area", admin_path, class: "btn btn-default" %>
+        <%= link_to "Categories", users_path, class: "btn btn-default" %>
+        <%= link_to "Add Website User", new_user_invitation_path, class: "btn btn-default" %>
+      </div>
+    </div>
+  </div>
 
-<%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post} do |f| %>
-  <%= devise_error_messages! %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="btn-group pull-left">
+              <%= link_to users_path, class: "btn btn-default btn-sm" do %>
+                <%= content_tag('i', nil, class: 'glyphicon glyphicon-chevron-left') %> Back
+              <% end %>
+            </div>
+            <h4 class="text-center">Add New Website User</h4>
+        </div>
+        <div class="panel-body">
+          <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :post} do |f| %>
+              <%= devise_error_messages! %>
 
-<% resource.class.invite_key_fields.each do |field| -%>
-  <%= f.input field %>
-<% end -%>
+            <% resource.class.invite_key_fields.each do |field| -%>
+              <%= f.input field %>
+            <% end -%>
 
-<%= f.button :submit, t("devise.invitations.new.submit_button") %>
-<% end %>
+            <%= f.button :submit, t("devise.invitations.new.submit_button") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

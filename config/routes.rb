@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
 
+  get '/admin', to: 'home#admin'
+
   resources :features
   resources :services
   resources :categories
   resources :products
   resources :teams
-  resources :users
-
-  get '/admin', to: 'home#admin'
+  resources :users, only: [:index, :destroy]
 
   root :to => 'home#index'
 
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # devise_for :users
+  devise_for :users, path: '', path_names: { sign_out: 'logout'}
 end
