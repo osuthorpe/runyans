@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'devise_invitable'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 gem "rmagick"
