@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   def index
     @features = Feature.all
     @services = Service.where(homepage: true)
+    @categories = Category.where(depth: 0)
   end
 
   def admin
