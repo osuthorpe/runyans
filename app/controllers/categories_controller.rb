@@ -46,6 +46,6 @@ class CategoriesController < ApplicationController
     end
 
     def secure_params
-      params.require(:category).permit(:name, :parent_id)
+      params.require(:category).permit(:name, :parent_id, :featured, :navigation)
     end
 end

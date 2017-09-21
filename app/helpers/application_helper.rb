@@ -43,30 +43,20 @@ module ApplicationHelper
 
     return '' if objects.size == 0
 
-    output = '<ul><li>'
+    output = '<li>'
     path = [nil]
 
-    objects.each_with_index do |o, i|
-      if o.parent_id != path.last
-        # We are on a new level, did we descend or ascend?
-        if path.include?(o.parent_id)
-          # Remove the wrong trailing path elements
-          while path.last != o.parent_id
-            path.pop
-            output << '</li></ul>'
-          end
-          output << '</li><li>'
-        else
-          path << o.parent_id
-          output << '<ul><li>'
-        end
-      elsif i != 0
-        output << '</li><li>'
-      end
-      output << capture(o, path.size - 1, &block)
+    objects.each_with_index do |object, i|
+
+      # if object.parent_id != path.last
+      #   output << capture(object, path.size - 1, &block)
+      # end
+      output << capture(object, path.size - 1, &block)
+      output << '</li><li>'
+
     end
 
-    output << '</li></ul>' * path.length
+    output << '</li>' * path.length
     output.html_safe
   end
 end
