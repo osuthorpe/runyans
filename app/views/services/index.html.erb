@@ -36,7 +36,10 @@
           </div>
           <div class="panel-footer text-center">
 
-            <p><%= link_to "edit", edit_service_path(service), class: "btn btn-primary btn-sm" %> <%= link_to 'delete',  service,  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></p>
+            <p>
+              <%= link_to "view", service_path(service), class: "btn btn-primary btn-sm" %> 
+              <%= link_to "edit", edit_service_path(service), class: "btn btn-primary btn-sm" %>
+              <%= link_to 'delete',  service,  method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></p>
           </div>
         </div>
       </div>
