@@ -6,5 +6,7 @@
 
   <%= f.input :homepage, label: 'include on homepage' %>
 
+  <%= f.input :status, collection: Feature.statuses.for_select %>
+
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

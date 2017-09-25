@@ -14,6 +14,10 @@
 
 class Team < ApplicationRecord
   mount_uploader :image, ImageUploader
+  extend SimplestStatus
 
   validates_presence_of :name
+
+  statuses :draft, :published, :archived
+  simple_status :locale, [:english]
 end

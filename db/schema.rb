@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921033501) do
+ActiveRecord::Schema.define(version: 20170925044537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20170921033501) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "homepage",   default: false
+    t.integer  "status",     default: 0,     null: false
+    t.integer  "locale",     default: 0,     null: false
   end
 
   create_table "media", force: :cascade do |t|
@@ -60,15 +62,19 @@ ActiveRecord::Schema.define(version: 20170921033501) do
     t.boolean  "published",  default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "status",     default: 0,     null: false
+    t.integer  "locale",     default: 0,     null: false
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",                    null: false
     t.text     "description"
     t.string   "price"
     t.string   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "status",      default: 0, null: false
+    t.integer  "locale",      default: 0, null: false
   end
 
   create_table "services", force: :cascade do |t|
@@ -80,16 +86,20 @@ ActiveRecord::Schema.define(version: 20170921033501) do
     t.datetime "updated_at",                  null: false
     t.boolean  "homepage",    default: false
     t.text     "body"
+    t.integer  "status",      default: 0,     null: false
+    t.integer  "locale",      default: 0,     null: false
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",                    null: false
     t.string   "image"
     t.text     "description"
     t.integer  "order"
     t.string   "title"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "status",      default: 0, null: false
+    t.integer  "locale",      default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|

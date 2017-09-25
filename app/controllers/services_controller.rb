@@ -46,6 +46,6 @@ class ServicesController < ApplicationController
     end
 
     def secure_params
-      params.require(:service).permit(:title, :description, :order, :image, :homepage, :body)
+      params.require(:service).permit(:title, :description, :order, :image, :homepage, :body, :status)
     end
 end
