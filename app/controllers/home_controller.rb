@@ -3,9 +3,8 @@ class HomeController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @features = Feature.all
-    @services = Service.where(homepage: true)
-    @categories = Category.where(depth: 0)
+    @features = Feature.published
+    @services = Service.published.where(homepage: true)
   end
 
   def admin

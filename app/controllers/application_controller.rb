@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
     def set_navigation
-      @nav_categories = Category.order('lft ASC')
+      @nav_categories = Category.where(navigation: true).order(name: :desc)
+      @nav_services = Service.published.order(title: :desc)
     end
 end
