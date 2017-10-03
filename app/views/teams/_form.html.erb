@@ -10,5 +10,7 @@
 
   <%= f.input :order, collection: 1..10, label: 'order of team members' %>
 
+  <%= f.input :status, collection: Feature.statuses.for_select %>
+
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

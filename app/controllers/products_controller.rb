@@ -48,6 +48,6 @@ class ProductsController < ApplicationController
     end
 
     def secure_params
-      params.require(:product).permit(:name, :description, :image, :image_cache, :price, category_ids: [])
+      params.require(:product).permit(:name, :description, :image, :image_cache, :status, :price, category_ids: [])
     end
 end

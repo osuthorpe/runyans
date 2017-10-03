@@ -7,11 +7,28 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-      <a class="navbar-brand" href="#">Runyans</a>
+      <%= link_to "Runyans", root_path, class: "navbar-brand" %>
+      <!-- <a class="navbar-brand" href="#">Runyans</a> -->
     </div>
-    <div id="navbar" class="collapse navbar-collapse pull-right">
+    <div id="navbar" class="collapse navbar-collapse navbar-right">
       <ul class="nav navbar-nav">
         <%= link_to_in_li "Home", root_path %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Products <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <%= nested_nav_li(@nav_categories) do |category| %>
+              <%= link_to category.name, category_path(category) %>
+            <% end %>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <% @nav_services.each do |service| %>
+              <%= link_to_in_li service.title, service_path(service) %>
+            <% end %>
+          </ul>
+        </li>
         <% if user_signed_in? %>
           <%= link_to_in_li "Admin Area", admin_path %>
         <% end %>

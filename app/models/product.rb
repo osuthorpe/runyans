@@ -13,9 +13,13 @@
 
 class Product < ApplicationRecord
   mount_uploader :image, ImageUploader
+  extend SimplestStatus
 
   has_many :categorizations
   has_many :categories, through: :categorizations
+
+  statuses :draft, :published, :archived
+  simple_status :locale, [:english]
 
   accepts_nested_attributes_for :categories
 end

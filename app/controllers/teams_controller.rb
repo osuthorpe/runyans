@@ -46,6 +46,6 @@ class TeamsController < ApplicationController
     end
 
     def secure_params
-      params.require(:team).permit(:title, :name, :description, :order, :image)
+      params.require(:team).permit(:title, :name, :description, :order, :image, :status)
     end
 end

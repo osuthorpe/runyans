@@ -10,20 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102231749) do
+ActiveRecord::Schema.define(version: 20170925044537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string   "name",                       null: false
+    t.string   "name",                           null: false
     t.integer  "parent_id"
-    t.integer  "lft",                        null: false
-    t.integer  "rgt",                        null: false
-    t.integer  "depth",          default: 0, null: false
-    t.integer  "children_count", default: 0, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "lft",                            null: false
+    t.integer  "rgt",                            null: false
+    t.integer  "depth",          default: 0,     null: false
+    t.integer  "children_count", default: 0,     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.boolean  "featured",       default: false
+    t.boolean  "navigation",     default: false
     t.index ["lft"], name: "index_categories_on_lft", using: :btree
     t.index ["parent_id"], name: "index_categories_on_parent_id", using: :btree
     t.index ["rgt"], name: "index_categories_on_rgt", using: :btree
@@ -42,6 +44,8 @@ ActiveRecord::Schema.define(version: 20170102231749) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.boolean  "homepage",   default: false
+    t.integer  "status",     default: 0,     null: false
+    t.integer  "locale",     default: 0,     null: false
   end
 
   create_table "media", force: :cascade do |t|
@@ -58,15 +62,19 @@ ActiveRecord::Schema.define(version: 20170102231749) do
     t.boolean  "published",  default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "status",     default: 0,     null: false
+    t.integer  "locale",     default: 0,     null: false
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",                    null: false
     t.text     "description"
     t.string   "price"
     t.string   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "status",      default: 0, null: false
+    t.integer  "locale",      default: 0, null: false
   end
 
   create_table "services", force: :cascade do |t|
@@ -77,16 +85,21 @@ ActiveRecord::Schema.define(version: 20170102231749) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.boolean  "homepage",    default: false
+    t.text     "body"
+    t.integer  "status",      default: 0,     null: false
+    t.integer  "locale",      default: 0,     null: false
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string   "name",        null: false
+    t.string   "name",                    null: false
     t.string   "image"
     t.text     "description"
     t.integer  "order"
     t.string   "title"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "status",      default: 0, null: false
+    t.integer  "locale",      default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|

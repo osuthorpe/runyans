@@ -37,4 +37,47 @@ module ApplicationHelper
     output << '</li></ul>' * path.length
     output.html_safe
   end
+
+  def nested_nav_li(objects, &block)
+    objects = objects.order(:lft) if objects.is_a? Class
+
+    return '' if objects.size == 0
+
+    output = '<li>'
+    path = [nil]
+
+    objects.each_with_index do |object, i|
+
+      # if object.parent_id != path.last
+      #   output << capture(object, path.size - 1, &block)
+      # end
+      output << capture(object, path.size - 1, &block)
+      output << '</li><li>'
+
+    end
+
+    output << '</li>' * path.length
+    output.html_safe
+  end
+
+  def markdown(text)
+   options = {
+     filter_html:     true,
+     hard_wrap:       true,
+     link_attributes: { rel: 'nofollow', target: "_blank" },
+     space_after_headers: true,
+     fenced_code_blocks: true
+   }
+
+   extensions = {
+     autolink:           true,
+     superscript:        true,
+     disable_indented_code_blocks: true
+   }
+
+   renderer = Redcarpet::Render::HTML.new(options)
+   markdown = Redcarpet::Markdown.new(renderer, extensions)
+
+   markdown.render(text).html_safe
+ end
 end

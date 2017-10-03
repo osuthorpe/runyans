@@ -14,6 +14,7 @@
 
 class Service < ApplicationRecord
   mount_uploader :image, ImageUploader
+  extend SimplestStatus
 
   validates_presence_of :image
   validates_presence_of :title
@@ -21,4 +22,7 @@ class Service < ApplicationRecord
   validates_presence_of :description
   validates_uniqueness_of :order
   validates_presence_of :order
+
+  statuses :draft, :published, :archived
+  simple_status :locale, [:english]
 end

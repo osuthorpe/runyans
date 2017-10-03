@@ -47,6 +47,9 @@ gem 'simple_form'
 gem 'bootstrap-growl-rails'
 gem 'gretel'
 gem 'annotate'
+gem 'redcarpet'
+gem 'coderay'
+gem 'simplest_status'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

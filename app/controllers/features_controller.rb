@@ -46,6 +46,6 @@ class FeaturesController < ApplicationController
     end
 
     def secure_params
-      params.require(:feature).permit(:title, :image, :image_cache, :homepage)
+      params.require(:feature).permit(:title, :image, :image_cache, :homepage, :status)
     end
 end

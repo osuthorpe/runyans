@@ -12,8 +12,12 @@
 
 class Feature < ApplicationRecord
   mount_uploader :image, ImageUploader
+  extend SimplestStatus
 
   validates_presence_of :image
   validates_presence_of :title
   validates_uniqueness_of :title
+
+  statuses :draft, :published, :archived
+  simple_status :locale, [:english]
 end

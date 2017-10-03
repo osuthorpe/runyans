@@ -2,7 +2,17 @@
 
   <%= f.input :name %>
 
-  <%= f.association :parent, collection: Category.where("id != #{@category.id}") %>
+  <% if @category.id %>
+    <% cat = Category.where("id != #{@category.id}") %>
+  <% else %>
+    <% cat = Category.all %>
+  <% end %>
+
+  <%= f.association :parent, collection: cat %>
+
+  <%= f.input :navigation, label: 'include in navigation' %>
+
+  <%= f.input :featured, label: 'include in homepage' %>
 
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

@@ -17,5 +17,7 @@
     <% end %>
   </div>
 
+  <%= f.input :status, collection: Feature.statuses.for_select %>
+
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
